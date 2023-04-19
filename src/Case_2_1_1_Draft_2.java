@@ -43,7 +43,7 @@ public class Case_2_1_1_Draft_2 {
 //    get the last day of month
         int lastDay = ym.lengthOfMonth();
 //    Создаем массив ArrayList, куда записываем в качестве элементов курс на текущую дату.
-        ArrayList<Double> arrayList = new ArrayList<>();
+        List<Double> list = new ArrayList<>();
 
 //    loop through the days
         for (int day = 1; day <= lastDay; day++) {
@@ -73,23 +73,36 @@ public class Case_2_1_1_Draft_2 {
                 // System.out.println(courseNextDoble);
                 // Выводим на экран дату и соответствующий курс.
                 System.out.println("Курс на " + nextDate + "    " + courseNextDoble);
-                arrayList.add(courseNextDoble);
+                list.add(courseNextDoble);
             } else {
                 String courseNextPage = "";
                 System.out.println("Курс на " + nextDate);
             }
         }
-        System.out.println(arrayList);
-        System.out.println(arrayList.get(1));
+//        System.out.println(list);
+//        System.out.println(list.get(1));
 
 //        Нахождение наибольшего значения.
-//        double listMaxx = arrayList[0];
-//
-//        for (int i = 0; i < arrayList.length; i++)
-//            if (listMaxx < decMax[i]) {
-//                listMaxx = decMax[i];
-//            }
-//        System.out.println("The max number is: " + listMaxx);
+//        Задаем исходную переменную: от которой начинаем считать.
+        Double min = list.get(0);
+        Double max = list.get(0);
+//        Задаем переменную: длина (или размер) массива.
+        int n = list.size();
+
+//        Задаем цикл перебора массива для поиска наибольшего и наименьшего значений.
+        for (int i = 1; i < n; i++) {
+            if (list.get(i) > max) {
+                max = list.get(i);
+            }
+        }
+
+        for (int i = 1; i < n; i++) {
+            if (list.get(i) < min) {
+                min = list.get(i);
+            }
+        }
+        System.out.println("\nНаибольшее значение курса: " + max);
+        System.out.println("Наименьшее значение курса: " + min);
     }
 
     private static String downloadWebPage(String url) throws IOException {
